@@ -23,3 +23,11 @@ def read_array_of_ints(file_path) -> list[list[int]]:
             array.append(list_of_integers)
 
     return array
+
+def read_strings_list(file_path) -> list[str]:
+    strings = []
+    with open(file_path, 'r') as file:
+        for line in file:
+            strings.append(line.strip())
+
+    return strings
