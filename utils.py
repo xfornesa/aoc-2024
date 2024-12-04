@@ -31,3 +31,12 @@ def read_strings_list(file_path) -> list[str]:
             strings.append(line.strip())
 
     return strings
+
+def read_array_of_chars(file_path) -> list[list[str]]:
+    array = []
+    with open(file_path, 'r') as file:
+        for line in file:
+            list_of_chars = line.split()
+            array.append(list_of_chars)
+
+    return array
