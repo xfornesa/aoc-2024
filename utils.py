@@ -1,3 +1,6 @@
+from typing import List, Tuple
+
+
 def read_pairs(file_path):
     pairs = []
     with open(file_path, 'r') as file:
@@ -40,3 +43,24 @@ def read_array_of_chars(file_path) -> list[list[str]]:
             array.append(list_of_chars)
 
     return array
+
+def read_sections(file_path):
+    parts = []
+    current_section = []
+    with open(file_path, 'r') as file:
+        for line in file:
+            if line == '\n':
+                parts.append(current_section)
+                current_section = []
+                continue
+            current_section.append(line.strip())
+    parts.append(current_section)
+
+    return parts
+
+# Output: [(47, 53), (97, 13), (97, 61), (97, 47), (75, 29)]
+def parse_pairs(strings_list: list[str]) -> list[tuple[int, ...]]:
+    return [tuple(map(int, s.split('|'))) for s in strings_list]
+
+def parse_ints(strings_list: list[str]) -> list[list[int]]:
+    return [list(map(int, s.split(','))) for s in strings_list]
